@@ -98,16 +98,15 @@ export default function ComparisonView({
                     className="absolute inset-0 w-full h-full object-contain pointer-events-none"
                 />
 
-                {/* Foreground (Original) - Clipped */}
+                {/* Foreground (Original) - Clipped with inset */}
                 <div
-                    className="absolute inset-0 w-full h-full overflow-hidden border-r-2 border-white dark:border-zinc-900 shadow-[2px_0_10px_rgba(0,0,0,0.1)]"
-                    style={{ width: `${sliderPosition}%` }}
+                    className="absolute inset-0 border-r-2 border-white dark:border-zinc-900 shadow-[2px_0_10px_rgba(0,0,0,0.1)]"
+                    style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
                 >
                     <img
                         src={originalUrl}
                         alt="Original"
-                        className="absolute inset-0 w-full h-full max-w-none object-contain pointer-events-none"
-                        style={{ width: containerRef.current ? containerRef.current.offsetWidth : '100%' }}
+                        className="absolute inset-0 w-full h-full object-contain pointer-events-none"
                     />
                 </div>
 

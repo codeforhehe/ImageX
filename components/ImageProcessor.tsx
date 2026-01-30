@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { removeBackground, Config } from "@imgly/background-removal"
 import { motion } from "framer-motion"
-import { Loader2, AlertCircle, CheckCircle2 } from "lucide-react"
+import { AlertCircle, CheckCircle2 } from "lucide-react"
 
 interface ImageProcessorProps {
     imageFile: File | null
@@ -72,7 +72,11 @@ export default function ImageProcessor({
                 >
                     <div className="relative">
                         <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl animate-pulse"></div>
-                        <Loader2 className="w-12 h-12 text-blue-500 animate-spin relative z-10" />
+                        {/* Pure CSS spinner for GPU-accelerated animation */}
+                        <div className="w-12 h-12 relative z-10">
+                            <div className="absolute inset-0 rounded-full border-4 border-gray-200 dark:border-zinc-700"></div>
+                            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-blue-500 animate-[spin_0.8s_linear_infinite]"></div>
+                        </div>
                     </div>
                     <p className="mt-6 font-medium text-lg text-gray-700 dark:text-gray-200 animate-pulse">{progress}</p>
 
